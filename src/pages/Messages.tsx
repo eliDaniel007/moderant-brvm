@@ -236,7 +236,7 @@ const Messages: React.FC = () => {
                   <ListItem 
                     key={conversation.id}
                     onClick={() => handleSelectConversation(conversation.id)}
-                    selected={selectedConversation === conversation.id}
+                    component="li"
                     sx={{
                       px: 2,
                       py: 1.5,

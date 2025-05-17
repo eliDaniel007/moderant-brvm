@@ -81,11 +81,11 @@ const Analysis: React.FC = () => {
     setActiveTab(newValue);
   };
 
-  const handleStockChange = (_event: SelectChangeEvent) => {
+  const handleStockChange = (event: SelectChangeEvent) => {
     setSelectedStock(event.target.value);
   };
 
-  const handleSearchChange = (_event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
 

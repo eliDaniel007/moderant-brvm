@@ -19,6 +19,7 @@ import {
   Tooltip,
   Legend,
   Filler,
+  type ChartOptions,
 } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
 import type { StockData } from '../../utils/api';
@@ -271,13 +272,13 @@ const StockChart: React.FC<StockChartProps> = ({
   const renderChart = () => {
     switch (chartType) {
       case 'line':
-        return <Line options={lineChartOptions as any} data={lineChartData} />;
+        return <Line options={lineChartOptions as ChartOptions<'line'>} data={lineChartData} />;
       case 'bar':
-        return <Bar options={volumeChartOptions as any} data={volumeChartData} />;
+        return <Bar options={volumeChartOptions as ChartOptions<'bar'>} data={volumeChartData} />;
       case 'candlestick':
-        return <Bar options={lineChartOptions as any} data={candlestickChartData} />;
+        return <Bar options={lineChartOptions as ChartOptions<'bar'>} data={candlestickChartData} />;
       default:
-        return <Line options={lineChartOptions as any} data={lineChartData} />;
+        return <Line options={lineChartOptions as ChartOptions<'line'>} data={lineChartData} />;
     }
   };
 
@@ -360,7 +361,7 @@ const StockChart: React.FC<StockChartProps> = ({
         
         {showVolume && chartType !== 'bar' && (
           <Box sx={{ height: 100, mt: 2 }}>
-            <Bar options={volumeChartOptions as any} data={volumeChartData} />
+            <Bar options={volumeChartOptions as ChartOptions<'bar'>} data={volumeChartData} />
           </Box>
         )}
       </CardContent>

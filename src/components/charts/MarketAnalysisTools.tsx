@@ -149,7 +149,7 @@ const MarketAnalysisTools: React.FC = () => {
     setActiveTab(newValue);
   };
 
-  const handleTimeframeChange = (_event: SelectChangeEvent) => {
+  const handleTimeframeChange = (event: SelectChangeEvent) => {
     setTimeframe(event.target.value);
   };
   
