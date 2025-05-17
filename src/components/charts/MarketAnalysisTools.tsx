@@ -145,11 +145,11 @@ const MarketAnalysisTools: React.FC = () => {
     setSentimentData(sentData);
   }, [timeframe]);
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
   };
 
-  const handleTimeframeChange = (event: SelectChangeEvent) => {
+  const handleTimeframeChange = (_event: SelectChangeEvent) => {
     setTimeframe(event.target.value);
   };
   

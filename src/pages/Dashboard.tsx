@@ -118,7 +118,7 @@ const Dashboard: React.FC = () => {
     instagram: { followers: 15280, engagement: 4.1, trend: 3.4 },
   });
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
   

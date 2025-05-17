@@ -63,7 +63,7 @@ const StockChart: React.FC<StockChartProps> = ({
     );
     
     const today = new Date();
-    let startDate = new Date();
+    const startDate = new Date();
     
     switch (timeRange) {
       case '1D':
@@ -111,7 +111,7 @@ const StockChart: React.FC<StockChartProps> = ({
   const volumeColor = 'rgba(45, 140, 255, 0.6)';
 
   const handleChartTypeChange = (
-    event: React.MouseEvent<HTMLElement>,
+    _event: React.MouseEvent<HTMLElement>,
     newChartType: ChartType | null,
   ) => {
     if (newChartType !== null) {
@@ -120,7 +120,7 @@ const StockChart: React.FC<StockChartProps> = ({
   };
 
   const handleTimeRangeChange = (
-    event: React.MouseEvent<HTMLElement>,
+    _event: React.MouseEvent<HTMLElement>,
     newTimeRange: string | null,
   ) => {
     if (newTimeRange !== null) {
@@ -183,7 +183,8 @@ const StockChart: React.FC<StockChartProps> = ({
         mode: 'index',
         intersect: false,
         callbacks: {
-          label: (context: any) => {
+          label: (context: unknown) => {
+            // @ts-expect-error: context type from Chart.js
             const value = context.raw;
             return `Prix: ${new Intl.NumberFormat('fr-FR', {
               style: 'currency',
@@ -209,8 +210,7 @@ const StockChart: React.FC<StockChartProps> = ({
         label: 'Volume',
         data: volumes,
         backgroundColor: volumeColor,
-        barThickness: 'flex',
-        maxBarThickness: 10,
+        barThickness: 10,
       },
     ],
   };
@@ -237,7 +237,8 @@ const StockChart: React.FC<StockChartProps> = ({
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
+          label: (context: unknown) => {
+            // @ts-expect-error: context type from Chart.js
             const value = context.raw;
             return `Volume: ${new Intl.NumberFormat('fr-FR').format(value)}`;
           },
@@ -262,8 +263,7 @@ const StockChart: React.FC<StockChartProps> = ({
         backgroundColor: filteredData.map((item) => 
           item.close >= item.open ? 'rgba(0, 198, 174, 0.8)' : 'rgba(249, 87, 56, 0.8)'
         ),
-        barThickness: 'flex',
-        maxBarThickness: 15,
+        barThickness: 10,
       },
     ],
   };
