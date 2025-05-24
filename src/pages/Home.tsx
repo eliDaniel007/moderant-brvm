@@ -89,7 +89,7 @@ const Home: React.FC = () => {
               mb: { xs: 2, sm: 2.5, md: 3 }
             }}
           >
-            Analysez la BRVM comme un Pro
+            BRVM Analyse : Votre allié pour investir intelligemment
           </Typography>
           <Typography 
             variant="h5" 
@@ -103,11 +103,11 @@ const Home: React.FC = () => {
               mb: { xs: 3, sm: 3.5, md: 4 }
             }}
           >
-            Accédez à des analyses boursières professionnelles et prenez les meilleures décisions d'investissement
+            Prenez une longueur d'avance sur la BRVM. Découvrez des analyses financières puissantes, des alertes personnalisées et des recommandations exclusives. Commencez gratuitement dès aujourd'hui !
           </Typography>
           <Button
             component={Link}
-            to="/subscription"
+            to="/register"
             variant="contained"
             color="primary"
             size={isMobile ? "medium" : "large"}
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
               transition: 'all 0.3s ease'
             }}
           >
-            S'abonner maintenant
+            Commencer gratuitement
           </Button>
         </Container>
       </Box>

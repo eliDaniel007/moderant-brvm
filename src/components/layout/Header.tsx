@@ -15,14 +15,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Link as RouterLink } from 'react-router-dom';
 
-const servicesList = [
-  { label: 'Analyse technique', path: '/analysis' },
-  { label: 'Recommandations', path: '/recommendations' },
-  { label: 'Alertes personnalisées', path: '/alerts' },
-  { label: 'Tableau de bord', path: '/dashboard' },
-  { label: 'Tarification', path: '/subscription' },
-];
-
 const Header: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -56,9 +48,11 @@ const Header: React.FC = () => {
       <Toolbar sx={{ justifyContent: 'space-between', minHeight: 72 }}>
         {/* Titre à gauche */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography variant="h6" sx={{ color: '#00C6AE', fontWeight: 700, letterSpacing: 1 }}>
-            BRVM Analyse
-          </Typography>
+          <RouterLink to="/" style={{ textDecoration: 'none' }}>
+            <Typography variant="h6" sx={{ color: '#00C6AE', fontWeight: 700, letterSpacing: 1, cursor: 'pointer' }}>
+              BRVM Analyse
+            </Typography>
+          </RouterLink>
         </Box>
 
         {/* Liens centraux ou menu mobile */}
@@ -74,22 +68,9 @@ const Header: React.FC = () => {
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
-              <MenuItem onClick={handleServicesOpen}>
-                Services <ArrowDropDownIcon />
+              <MenuItem component={RouterLink} to="/analysis" onClick={handleMenuClose}>
+                Analyse financière
               </MenuItem>
-              <Menu
-                anchorEl={servicesAnchorEl}
-                open={Boolean(servicesAnchorEl)}
-                onClose={handleServicesClose}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-              >
-                {servicesList.map((service) => (
-                  <MenuItem key={service.label} component={RouterLink} to={service.path} onClick={handleServicesClose}>
-                    {service.label}
-                  </MenuItem>
-                ))}
-              </Menu>
               <MenuItem component={RouterLink} to="/dashboard" onClick={handleMenuClose}>
                 Tableau de bord
               </MenuItem>
@@ -111,29 +92,14 @@ const Header: React.FC = () => {
           </>
         ) : (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-            <Box>
-              <Button
-                color="inherit"
-                endIcon={<ArrowDropDownIcon />}
-                sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
-                onClick={handleServicesOpen}
-              >
-                Services
-              </Button>
-              <Menu
-                anchorEl={servicesAnchorEl}
-                open={Boolean(servicesAnchorEl)}
-                onClose={handleServicesClose}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-              >
-                {servicesList.map((service) => (
-                  <MenuItem key={service.label} component={RouterLink} to={service.path} onClick={handleServicesClose}>
-                    {service.label}
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
+            <Button
+              component={RouterLink}
+              to="/analysis"
+              color="inherit"
+              sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
+            >
+              Analyse financière
+            </Button>
             <Button
               component={RouterLink}
               to="/dashboard"
