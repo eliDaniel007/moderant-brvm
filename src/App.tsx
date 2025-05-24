@@ -2,7 +2,6 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import Header from './components/layout/Header';
-import Sidebar from './components/layout/Sidebar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -85,15 +84,12 @@ const App: React.FC = () => {
         backgroundImage: `radial-gradient(circle at 15% 50%, rgba(0, 198, 174, 0.08) 0%, transparent 25%), 
                            radial-gradient(circle at 85% 30%, rgba(45, 140, 255, 0.08) 0%, transparent 30%)`
       }}>
-        <Sidebar />
         <Box
           component="main"
           sx={{
             display: 'flex',
             flexDirection: 'column',
             flexGrow: 1,
-            width: 'calc(100vw - 80px)',
-            marginLeft: '80px', // Pour accommoder la sidebar
             minHeight: '100vh',
             background: `linear-gradient(135deg, #181A20 0%, #141518 100%)`,
             backgroundImage: `radial-gradient(circle at 15% 50%, rgba(0, 198, 174, 0.08) 0%, transparent 25%), 
