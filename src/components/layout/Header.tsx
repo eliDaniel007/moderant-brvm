@@ -14,23 +14,30 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 
-const navLinks = [
-  { label: 'Services', path: '/subscription' },
-  { label: 'Tableau de bord', path: '/dashboard' },
-  { label: 'Messages', path: '/messages' },
-  { label: 'Tarification', path: '/subscription' },
+const serviceList = [
+  { label: 'Analyse technique', path: '/services/technique' },
+  { label: 'Analyse fondamentale', path: '/services/fondamentale' },
+  { label: 'Alertes personnalisées', path: '/services/alertes' },
+  { label: 'Recommandations', path: '/services/recommandations' },
 ];
 
 const Header: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [servicesAnchor, setServicesAnchor] = useState<null | HTMLElement>(null);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleMenuClose = () => {
     setAnchorEl(null);
+  };
+  const handleServicesOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setServicesAnchor(event.currentTarget);
+  };
+  const handleServicesClose = () => {
+    setServicesAnchor(null);
   };
 
   return (
@@ -45,14 +52,11 @@ const Header: React.FC = () => {
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between', minHeight: 72 }}>
-        {/* Logo à gauche */}
+        {/* Titre à gauche */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <RouterLink to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-            <img src="/logo192.png" alt="Logo" style={{ height: 40, marginRight: 12 }} />
-            <Typography variant="h6" sx={{ color: '#00C6AE', fontWeight: 700, letterSpacing: 1 }}>
-              Moderant
-            </Typography>
-          </RouterLink>
+          <Typography variant="h6" sx={{ color: '#00C6AE', fontWeight: 700, letterSpacing: 1 }}>
+            BRVM Analyse
+          </Typography>
         </Box>
 
         {/* Liens centraux ou menu mobile */}
@@ -68,11 +72,26 @@ const Header: React.FC = () => {
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
-              {navLinks.map((link) => (
-                <MenuItem key={link.label} component={RouterLink} to={link.path} onClick={handleMenuClose}>
-                  {link.label}
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleServicesOpen}>Services</MenuItem>
+              <Menu
+                anchorEl={servicesAnchor}
+                open={Boolean(servicesAnchor)}
+                onClose={handleServicesClose}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+              >
+                {serviceList.map((service) => (
+                  <MenuItem key={service.label} component={RouterLink} to={service.path} onClick={handleServicesClose}>
+                    {service.label}
+                  </MenuItem>
+                ))}
+              </Menu>
+              <MenuItem component={RouterLink} to="/dashboard" onClick={handleMenuClose}>
+                Tableau de bord
+              </MenuItem>
+              <MenuItem component={RouterLink} to="/messages" onClick={handleMenuClose}>
+                Messages
+              </MenuItem>
               <MenuItem component={RouterLink} to="/login" onClick={handleMenuClose}>
                 Connexion
               </MenuItem>
@@ -85,17 +104,42 @@ const Header: React.FC = () => {
           </>
         ) : (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-            {navLinks.map((link) => (
-              <Button
-                key={link.label}
-                component={RouterLink}
-                to={link.path}
-                color="inherit"
-                sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
-              >
-                {link.label}
-              </Button>
-            ))}
+            <Button
+              color="inherit"
+              sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
+              onClick={handleServicesOpen}
+            >
+              Services
+            </Button>
+            <Menu
+              anchorEl={servicesAnchor}
+              open={Boolean(servicesAnchor)}
+              onClose={handleServicesClose}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+            >
+              {serviceList.map((service) => (
+                <MenuItem key={service.label} component={RouterLink} to={service.path} onClick={handleServicesClose}>
+                  {service.label}
+                </MenuItem>
+              ))}
+            </Menu>
+            <Button
+              component={RouterLink}
+              to="/dashboard"
+              color="inherit"
+              sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
+            >
+              Tableau de bord
+            </Button>
+            <Button
+              component={RouterLink}
+              to="/messages"
+              color="inherit"
+              sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
+            >
+              Messages
+            </Button>
           </Box>
         )}
 
