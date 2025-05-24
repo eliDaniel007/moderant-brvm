@@ -12,20 +12,22 @@ import {
   Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Link as RouterLink } from 'react-router-dom';
 
-const serviceList = [
-  { label: 'Analyse technique', path: '/services/technique' },
-  { label: 'Analyse fondamentale', path: '/services/fondamentale' },
-  { label: 'Alertes personnalisées', path: '/services/alertes' },
-  { label: 'Recommandations', path: '/services/recommandations' },
+const servicesList = [
+  { label: 'Analyse technique', path: '/analysis' },
+  { label: 'Recommandations', path: '/recommendations' },
+  { label: 'Alertes personnalisées', path: '/alerts' },
+  { label: 'Tableau de bord', path: '/dashboard' },
+  { label: 'Tarification', path: '/subscription' },
 ];
 
 const Header: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [servicesAnchor, setServicesAnchor] = useState<null | HTMLElement>(null);
+  const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -34,10 +36,10 @@ const Header: React.FC = () => {
     setAnchorEl(null);
   };
   const handleServicesOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setServicesAnchor(event.currentTarget);
+    setServicesAnchorEl(event.currentTarget);
   };
   const handleServicesClose = () => {
-    setServicesAnchor(null);
+    setServicesAnchorEl(null);
   };
 
   return (
@@ -72,15 +74,17 @@ const Header: React.FC = () => {
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
-              <MenuItem onClick={handleServicesOpen}>Services</MenuItem>
+              <MenuItem onClick={handleServicesOpen}>
+                Services <ArrowDropDownIcon />
+              </MenuItem>
               <Menu
-                anchorEl={servicesAnchor}
-                open={Boolean(servicesAnchor)}
+                anchorEl={servicesAnchorEl}
+                open={Boolean(servicesAnchorEl)}
                 onClose={handleServicesClose}
                 anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'right' }}
               >
-                {serviceList.map((service) => (
+                {servicesList.map((service) => (
                   <MenuItem key={service.label} component={RouterLink} to={service.path} onClick={handleServicesClose}>
                     {service.label}
                   </MenuItem>
@@ -91,6 +95,9 @@ const Header: React.FC = () => {
               </MenuItem>
               <MenuItem component={RouterLink} to="/messages" onClick={handleMenuClose}>
                 Messages
+              </MenuItem>
+              <MenuItem component={RouterLink} to="/subscription" onClick={handleMenuClose}>
+                Tarification
               </MenuItem>
               <MenuItem component={RouterLink} to="/login" onClick={handleMenuClose}>
                 Connexion
@@ -104,26 +111,29 @@ const Header: React.FC = () => {
           </>
         ) : (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-            <Button
-              color="inherit"
-              sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
-              onClick={handleServicesOpen}
-            >
-              Services
-            </Button>
-            <Menu
-              anchorEl={servicesAnchor}
-              open={Boolean(servicesAnchor)}
-              onClose={handleServicesClose}
-              anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-              transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-            >
-              {serviceList.map((service) => (
-                <MenuItem key={service.label} component={RouterLink} to={service.path} onClick={handleServicesClose}>
-                  {service.label}
-                </MenuItem>
-              ))}
-            </Menu>
+            <Box>
+              <Button
+                color="inherit"
+                endIcon={<ArrowDropDownIcon />}
+                sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
+                onClick={handleServicesOpen}
+              >
+                Services
+              </Button>
+              <Menu
+                anchorEl={servicesAnchorEl}
+                open={Boolean(servicesAnchorEl)}
+                onClose={handleServicesClose}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+              >
+                {servicesList.map((service) => (
+                  <MenuItem key={service.label} component={RouterLink} to={service.path} onClick={handleServicesClose}>
+                    {service.label}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
             <Button
               component={RouterLink}
               to="/dashboard"
@@ -139,6 +149,14 @@ const Header: React.FC = () => {
               sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
             >
               Messages
+            </Button>
+            <Button
+              component={RouterLink}
+              to="/subscription"
+              color="inherit"
+              sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
+            >
+              Tarification
             </Button>
           </Box>
         )}
