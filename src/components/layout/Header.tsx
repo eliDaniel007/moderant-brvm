@@ -12,39 +12,31 @@ import {
   Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Link as RouterLink } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [servicesAnchorEl, setServicesAnchorEl] = useState<null | HTMLElement>(null);
-
+  
   const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-  const handleServicesOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setServicesAnchorEl(event.currentTarget);
-  };
-  const handleServicesClose = () => {
-    setServicesAnchorEl(null);
-  };
 
   return (
-    <AppBar
-      position="sticky"
-      elevation={0}
-      sx={{
+      <AppBar
+        position="sticky"
+        elevation={0}
+        sx={{
         background: 'rgba(24, 26, 32, 0.85)',
-        backdropFilter: 'blur(10px)',
-        boxShadow: 'none',
+          backdropFilter: 'blur(10px)',
+          boxShadow: 'none',
         px: { xs: 1, sm: 4 },
-      }}
-    >
+        }}
+      >
       <Toolbar sx={{ justifyContent: 'space-between', minHeight: 72 }}>
         {/* Titre à gauche */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -61,13 +53,13 @@ const Header: React.FC = () => {
             <IconButton color="inherit" onClick={handleMenuOpen}>
               <MenuIcon />
             </IconButton>
-            <Menu
+                    <Menu
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={handleMenuClose}
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-            >
+                    >
               <MenuItem component={RouterLink} to="/analysis" onClick={handleMenuClose}>
                 Analyse financière
               </MenuItem>
@@ -76,21 +68,21 @@ const Header: React.FC = () => {
               </MenuItem>
               <MenuItem component={RouterLink} to="/messages" onClick={handleMenuClose}>
                 Messages
-              </MenuItem>
+                      </MenuItem>
               <MenuItem component={RouterLink} to="/subscription" onClick={handleMenuClose}>
                 Tarification
-              </MenuItem>
+                      </MenuItem>
               <MenuItem component={RouterLink} to="/login" onClick={handleMenuClose}>
                 Connexion
-              </MenuItem>
+                      </MenuItem>
               <MenuItem component={RouterLink} to="/register" onClick={handleMenuClose}>
                 <Button variant="contained" color="primary" fullWidth sx={{ borderRadius: 2, fontWeight: 700 }}>
                   Commencer gratuitement
                 </Button>
-              </MenuItem>
-            </Menu>
+                      </MenuItem>
+                    </Menu>
           </>
-        ) : (
+                ) : (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
             <Button
               component={RouterLink}
@@ -117,15 +109,15 @@ const Header: React.FC = () => {
               Messages
             </Button>
             <Button
-              component={RouterLink}
+                    component={RouterLink}
               to="/subscription"
               color="inherit"
               sx={{ fontWeight: 600, fontSize: '1rem', letterSpacing: 0.5 }}
-            >
+                  >
               Tarification
             </Button>
-          </Box>
-        )}
+            </Box>
+          )}
 
         {/* Actions à droite */}
         {!isMobile && (

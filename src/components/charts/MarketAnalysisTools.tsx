@@ -352,8 +352,21 @@ const MarketAnalysisTools: React.FC = () => {
               <Line data={prepareVolatilityChartData()} options={vixChartOptions} />
             </Paper>
           </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Paper sx={{ p: 2, height: '400px', bgcolor: theme.palette.background.default }}>
+          <Grid size={{ xs: 12, md: 4 }} sx={{ minHeight: 320, overflow: 'visible' }}>
+            <Paper
+              sx={{
+                p: 2,
+                height: { xs: 'auto', md: 480 },
+                minHeight: 320,
+                maxHeight: { xs: 'none', md: 520 },
+                bgcolor: theme.palette.background.default,
+                overflowY: 'auto',
+                overflowX: 'visible',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+              }}
+            >
               <Typography variant="subtitle1" fontWeight="bold" sx={{ 
                 mb: 2, 
                 pb: 1, 
@@ -492,20 +505,25 @@ const MarketAnalysisTools: React.FC = () => {
                 variant="outlined" 
                 sx={{ 
                   mt: 3, 
-                  p: 1.5, 
+                  p: 2.5, 
                   borderRadius: 2,
+                  minHeight: 120,
                   borderColor: currentVix < threshold ? 'success.main' : 'error.main',
                   bgcolor: `${currentVix < threshold ? 'success' : 'error'}.main10`,
+                  overflow: 'visible',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
                 }}
               >
                 <Typography variant="subtitle2" color={currentVix < threshold ? 'success.main' : 'error.main'} gutterBottom>
                   <InfoOutlinedIcon sx={{ fontSize: 16, mr: 0.5, verticalAlign: 'text-bottom' }} />
                   Interprétation
                 </Typography>
-                <Typography variant="body2" sx={{ mt: 0.5 }}>
+                <Typography variant="body2" sx={{ mt: 1, whiteSpace: 'pre-line' }}>
                   {currentVix < threshold 
-                    ? 'La volatilité du marché est actuellement dans une zone de confiance modérée. L\'environnement est relativement favorable pour des investissements à moyen terme.'
-                    : 'La volatilité du marché est actuellement élevée. Une prudence accrue est recommandée pour les nouveaux investissements. Privilégiez les actifs défensifs et diversifiez davantage.'}
+                    ? "La volatilité du marché est actuellement dans une zone de confiance modérée.\nL'environnement est relativement favorable pour des investissements à moyen terme."
+                    : "La volatilité du marché est actuellement élevée.\nUne prudence accrue est recommandée pour les nouveaux investissements.\nPrivilégiez les actifs défensifs et diversifiez davantage."}
                 </Typography>
               </Paper>
             </Paper>
@@ -729,8 +747,21 @@ const MarketAnalysisTools: React.FC = () => {
               </Box>
             </Paper>
           </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <Paper sx={{ p: 2, height: '400px', bgcolor: theme.palette.background.default }}>
+          <Grid size={{ xs: 12, md: 4 }} sx={{ minHeight: 320, overflow: 'visible' }}>
+            <Paper
+              sx={{
+                p: 2,
+                height: { xs: 'auto', md: 480 },
+                minHeight: 320,
+                maxHeight: { xs: 'none', md: 520 },
+                bgcolor: theme.palette.background.default,
+                overflowY: 'auto',
+                overflowX: 'visible',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+              }}
+            >
               <Typography variant="subtitle1" fontWeight="bold" sx={{ 
                 mb: 2, 
                 pb: 1, 
