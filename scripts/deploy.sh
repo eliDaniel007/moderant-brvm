@@ -129,6 +129,6 @@ if [[ $deploy_vercel =~ ^[Yy]$ ]]; then
 fi
 echo ""
 echo "🌐 Votre application sera disponible sur Vercel dans quelques minutes"
-echo "📱 Lien probable: https://bourseanalyse.vercel.app"
+echo "📱 Lien probable: https://moderant-brvm.vercel.app"
 echo ""
 echo "📚 Pour plus d'informations, consultez GUIDE_DEPLOIEMENT.md" 

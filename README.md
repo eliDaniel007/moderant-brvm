@@ -258,13 +258,13 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ### Option 1: Déploiement Vercel (Recommandé)
 1. Cliquez sur le bouton ci-dessous pour déployer directement sur Vercel :
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/VOTRE_USERNAME/bourseanalyse)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/eliDaniel007/moderant-brvm)
 
 ### Option 2: Déploiement Manuel
 ```bash
 # Cloner le repository
-git clone https://github.com/VOTRE_USERNAME/bourseanalyse.git
-cd bourseanalyse
+git clone https://github.com/eliDaniel007/moderant-brvm.git
+cd moderant-brvm
 
 # Installer les dépendances
 npm install

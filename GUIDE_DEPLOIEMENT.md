@@ -18,13 +18,13 @@ git commit -m "Initial commit - BourseAnalyse application"
 ### 1.2 Créer un nouveau repository sur GitHub
 1. Allez sur [GitHub.com](https://github.com)
 2. Cliquez sur "New repository"
-3. Nommez-le `bourseanalyse`
+3. Nommez-le `moderant-brvm` (ou utilisez votre repository existant)
 4. **Ne pas** initialiser avec README (nous en avons déjà un)
 5. Cliquez sur "Create repository"
 
 ### 1.3 Connecter le repository local à GitHub
 ```bash
-git remote add origin https://github.com/VOTRE_USERNAME/bourseanalyse.git
+git remote add origin https://github.com/eliDaniel007/moderant-brvm.git
 git branch -M main
 git push -u origin main
 ```
@@ -39,7 +39,7 @@ git push -u origin main
 
 2. **Importer le projet**
    - Cliquez sur "New Project"
-   - Sélectionnez votre repository `bourseanalyse`
+   - Sélectionnez votre repository `moderant-brvm`
    - Vercel détectera automatiquement que c'est un projet Vite
 
 3. **Configuration automatique**
@@ -108,7 +108,7 @@ https://bourseanalyse.vercel.app
 ### 4.2 Lien de preview
 Pour chaque pull request, Vercel génère automatiquement un lien de preview :
 ```
-https://bourseanalyse-git-feature-branch.vercel.app
+https://moderant-brvm-git-feature-branch.vercel.app
 ```
 
 ## 🔄 Étape 5: Mise à jour et Maintenance
