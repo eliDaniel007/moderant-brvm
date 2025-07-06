@@ -1,522 +1,187 @@
 import React from 'react';
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  Card,
-  CardContent,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material';
 import { Link } from 'react-router-dom';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CandlestickChartIcon from '@mui/icons-material/CandlestickChart';
-import AutoGraphIcon from '@mui/icons-material/AutoGraph';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import Button from '../components/ui/Button';
 
 const Home: React.FC = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  
   const features = [
     {
-      title: 'Analyses en temps réel',
-      description: 'Accédez à des analyses techniques et fondamentales détaillées des actions BRVM',
-      icon: <CandlestickChartIcon fontSize={isMobile ? "medium" : "large"} sx={{ color: '#00C6AE' }} />,
+      icon: '📊',
+      title: 'Analyses Techniques Avancées',
+      description: 'Accédez à des analyses détaillées et des indicateurs techniques pour prendre des décisions éclairées.'
     },
     {
-      title: 'Recommandations mensuelles',
-      description: 'Recevez des recommandations d\'achat/vente basées sur des analyses approfondies',
-      icon: <AutoGraphIcon fontSize={isMobile ? "medium" : "large"} sx={{ color: '#2D8CFF' }} />,
+      icon: '🔔',
+      title: 'Alertes Personnalisées',
+      description: 'Configurez des alertes sur vos actions préférées et soyez notifié des opportunités importantes.'
     },
     {
-      title: 'Alertes personnalisées',
-      description: 'Soyez notifié dès qu\'une action atteint vos seuils de prix',
-      icon: <NotificationsActiveIcon fontSize={isMobile ? "medium" : "large"} sx={{ color: '#F95738' }} />,
+      icon: '📈',
+      title: 'Suivi de Performance',
+      description: 'Surveillez vos investissements avec des graphiques interactifs et des rapports détaillés.'
     },
+    {
+      icon: '💰',
+      title: 'Gestion de Portefeuille',
+      description: 'Gérez efficacement votre portefeuille d\'actions avec des outils professionnels.'
+    }
+  ];
+
+  const stats = [
+    { value: '10,000+', label: 'Utilisateurs actifs' },
+    { value: '500+', label: 'Actions suivies' },
+    { value: '95%', label: 'Précision des analyses' },
+    { value: '24/7', label: 'Support disponible' }
   ];
 
   return (
-    <Box sx={{ pb: { xs: 4, sm: 6, md: 8 } }}>
+    <div className="min-h-screen bg-dark-950">
       {/* Hero Section */}
-      <Box
-        sx={{
-          position: 'relative',
-          overflow: 'hidden',
-          py: { xs: 6, sm: 8, md: 12 },
-          px: { xs: 2, sm: 3, md: 4 },
-          textAlign: 'center',
-          width: '100%',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'radial-gradient(circle at 20% 30%, rgba(0, 198, 174, 0.15) 0%, transparent 30%)',
-            zIndex: -1,
-          },
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'radial-gradient(circle at 80% 60%, rgba(45, 140, 255, 0.1) 0%, transparent 40%)',
-            zIndex: -1,
-          },
-        }}
-      >
-        <Container maxWidth={false} sx={{ width: '100%', px: { xs: 2, sm: 4, md: 5 } }}>
-          <Typography 
-            variant="h2" 
-            component="h1" 
-            gutterBottom
-            sx={{ 
-              fontWeight: 700,
-              fontSize: { xs: '2rem', sm: '2.5rem', md: '3.75rem' },
-              lineHeight: { xs: 1.2, sm: 1.2, md: 1.1 },
-              background: 'linear-gradient(to right, #00C6AE, #2D8CFF)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              mb: { xs: 2, sm: 2.5, md: 3 }
-            }}
-          >
-            BRVM Analyse : Votre allié pour investir intelligemment
-          </Typography>
-          <Typography 
-            variant="h5" 
-            component="h2" 
-            gutterBottom
-            sx={{ 
-              color: '#A0AEC0',
-              fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
-              maxWidth: '800px',
-              mx: 'auto',
-              mb: { xs: 3, sm: 3.5, md: 4 }
-            }}
-          >
-            Prenez une longueur d'avance sur la BRVM. Découvrez des analyses financières puissantes, des alertes personnalisées et des recommandations exclusives. Commencez gratuitement dès aujourd'hui !
-          </Typography>
-          <Button
-            component={Link}
-            to="/register"
-            variant="contained"
-            color="primary"
-            size={isMobile ? "medium" : "large"}
-            sx={{ 
-              py: { xs: 1, sm: 1.25, md: 1.5 },
-              px: { xs: 3, sm: 3.5, md: 4 },
-              fontSize: { xs: '0.95rem', sm: '1rem', md: '1.1rem' },
-              boxShadow: '0 4px 14px 0 rgba(0, 198, 174, 0.5)',
-              '&:hover': {
-                boxShadow: '0 6px 20px 0 rgba(0, 198, 174, 0.7)',
-                transform: 'translateY(-2px)',
-              },
-              transition: 'all 0.3s ease'
-            }}
-          >
-            Commencer gratuitement
-          </Button>
-        </Container>
-      </Box>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 via-dark-950 to-dark-950"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+          <div className="text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in">
+              Investissez avec{' '}
+              <span className="text-gradient-animated">Confiance</span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              La plateforme de trading la plus avancée pour les marchés financiers africains. 
+              Analysez, investissez et gérez votre portefeuille avec des outils professionnels.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <Link to="/register">
+                <Button variant="primary" size="lg">
+                  Commencer gratuitement
+                </Button>
+              </Link>
+              <Link to="/login">
+                <Button variant="secondary" size="lg">
+                  Se connecter
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+        
+        {/* Animated background elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-primary-500/10 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-blue-500/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-green-500/10 rounded-full blur-xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </section>
 
       {/* Features Section */}
-      <Container maxWidth={false} sx={{ py: { xs: 4, sm: 5, md: 10 }, width: '100%', px: { xs: 2, sm: 4, md: 5 } }}>
-        <Typography 
-          variant="h3" 
-          component="h2" 
-          align="center" 
-          gutterBottom
-          sx={{ 
-            mb: { xs: 3, sm: 4, md: 6 },
-            fontWeight: 600,
-            fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' }
-          }}
-        >
-          Fonctionnalités Principales
-        </Typography>
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            flexDirection: { xs: 'column', sm: 'row' },
-            flexWrap: 'wrap',
-            gap: { xs: 2, sm: 3, md: 4 },
-            justifyContent: 'center'
-          }}
-        >
-          {features.map((feature) => (
-            <Box 
-              key={feature.title} 
-              sx={{ 
-                width: { xs: '100%', sm: 'calc(50% - 16px)', md: '30%' },
-                minWidth: { sm: '280px', md: '280px' },
-                flex: { sm: '1 1 280px' },
-                maxWidth: { sm: '100%', md: '380px' }
-              }}
-            >
-              <Card 
-                sx={{ 
-                  height: '100%',
-                  background: 'rgba(35, 39, 47, 0.5)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.05)',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-5px)',
-                    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
-                    border: '1px solid rgba(0, 198, 174, 0.2)',
-                  },
-                }}
+      <section className="py-20 bg-dark-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Pourquoi choisir MODERANT ?
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Une suite complète d'outils conçus pour les investisseurs modernes
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <div 
+                key={index}
+                className="card hover-lift text-center p-6 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardContent sx={{ 
-                  p: { xs: 2.5, sm: 3, md: 4 }, 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  alignItems: 'center', 
-                  textAlign: 'center' 
-                }}>
-                  <Box sx={{ mb: { xs: 2, md: 3 } }}>
-                    {feature.icon}
-                  </Box>
-                  <Typography 
-                    variant="h5" 
-                    component="h3" 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600, 
-                      mb: { xs: 1, md: 2 },
-                      fontSize: { xs: '1.25rem', sm: '1.4rem', md: '1.5rem' }
-                    }}
-                  >
-                    {feature.title}
-                  </Typography>
-                  <Typography 
-                    variant="body1" 
-                    color="text.secondary"
-                    sx={{ 
-                      fontSize: { xs: '0.875rem', sm: '0.95rem', md: '1rem' } 
-                    }}
-                  >
-                    {feature.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Box>
-          ))}
-        </Box>
-      </Container>
+                <div className="text-4xl mb-4">{feature.icon}</div>
+                <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
+                <p className="text-slate-400">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Pricing Section */}
-      <Box sx={{ py: { xs: 4, sm: 5, md: 10 } }}>
-        <Container maxWidth="md">
-          <Typography 
-            variant="h3" 
-            component="h2" 
-            align="center" 
-            gutterBottom
-            sx={{ 
-              mb: { xs: 3, sm: 4, md: 6 },
-              fontWeight: 600,
-              fontSize: { xs: '1.75rem', sm: '2.25rem', md: '3rem' }
-            }}
-          >
-            Tarifs simples et transparents
-          </Typography>
-          <Box 
-            sx={{ 
-              display: 'flex', 
-              flexDirection: { xs: 'column', sm: 'row' },
-              flexWrap: 'wrap',
-              gap: { xs: 2, sm: 3, md: 4 },
-              justifyContent: 'center'
-            }}
-          >
-            <Box 
-              sx={{ 
-                width: { xs: '100%', sm: 'calc(50% - 16px)', md: '45%' },
-                minWidth: { sm: '280px', md: '280px' },
-                flex: { sm: '1 1 280px' },
-                maxWidth: { sm: '100%', md: '380px' }
-              }}
-            >
-              <Card
-                sx={{ 
-                  background: 'rgba(35, 39, 47, 0.5)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.05)',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-5px)',
-                    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
-                    border: '1px solid rgba(0, 198, 174, 0.2)',
-                  },
-                }}
+      {/* Stats Section */}
+      <section className="py-20 bg-gradient-to-r from-primary-900/20 to-blue-900/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div 
+                key={index}
+                className="text-center animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <CardContent sx={{ p: { xs: 2.5, sm: 3, md: 4 }, textAlign: 'center' }}>
-                  <Typography 
-                    variant="h4" 
-                    component="h3" 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' } 
-                    }}
-                  >
-                    Mensuel
-                  </Typography>
-                  <Typography 
-                    variant="h3" 
-                    component="div" 
-                    color="primary" 
-                    gutterBottom
-                    sx={{ 
-                      my: { xs: 2, md: 3 },
-                      fontWeight: 700,
-                      fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }
-                    }}
-                  >
-                    10 000 FCFA
-                  </Typography>
-                  <Typography 
-                    variant="body1" 
-                    color="text.secondary" 
-                    paragraph 
-                    sx={{ 
-                      mb: { xs: 3, md: 4 },
-                      fontSize: { xs: '0.875rem', sm: '0.95rem', md: '1rem' }
-                    }}
-                  >
-                    Accès à toutes les fonctionnalités
-                  </Typography>
-                  <Button
-                    component={Link}
-                    to="/subscription"
-                    variant="outlined"
-                    size={isMobile ? "medium" : "large"}
-                    sx={{ 
-                      width: '100%',
-                      py: { xs: 0.75, sm: 1, md: 1.5 }
-                    }}
-                  >
-                    Choisir
-                  </Button>
-                </CardContent>
-              </Card>
-            </Box>
+                <div className="text-3xl lg:text-4xl font-bold text-primary-400 mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-slate-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <Box 
-              sx={{ 
-                width: { xs: '100%', sm: 'calc(50% - 16px)', md: '45%' },
-                minWidth: { sm: '280px', md: '280px' },
-                flex: { sm: '1 1 280px' },
-                maxWidth: { sm: '100%', md: '380px' }
-              }}
-            >
-              <Card
-                sx={{ 
-                  background: 'rgba(45, 140, 255, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(45, 140, 255, 0.2)',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-5px)',
-                    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
-                    border: '1px solid rgba(45, 140, 255, 0.3)',
-                  },
-                }}
-              >
-                <CardContent sx={{ p: { xs: 2.5, sm: 3, md: 4 }, textAlign: 'center' }}>
-                  <Typography 
-                    variant="h4" 
-                    component="h3" 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 600,
-                      fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' }
-                    }}
-                  >
-                    Annuel
-                  </Typography>
-                  <Typography 
-                    variant="h3" 
-                    component="div" 
-                    color="secondary" 
-                    gutterBottom
-                    sx={{ 
-                      my: { xs: 2, md: 3 },
-                      fontWeight: 700,
-                      fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }
-                    }}
-                  >
-                    100 000 FCFA
-                  </Typography>
-                  <Typography 
-                    variant="body1" 
-                    color="text.secondary" 
-                    paragraph 
-                    sx={{ 
-                      mb: { xs: 3, md: 4 },
-                      fontSize: { xs: '0.875rem', sm: '0.95rem', md: '1rem' }
-                    }}
-                  >
-                    Économisez 20% avec l'abonnement annuel
-                  </Typography>
-                  <Button
-                    component={Link}
-                    to="/subscription"
-                    variant="contained"
-                    color="secondary"
-                    size={isMobile ? "medium" : "large"}
-                    sx={{ 
-                      width: '100%',
-                      py: { xs: 0.75, sm: 1, md: 1.5 }
-                    }}
-                  >
-                    Choisir
-                  </Button>
-                </CardContent>
-              </Card>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
+      {/* CTA Section */}
+      <section className="py-20 bg-dark-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+            Prêt à transformer vos investissements ?
+          </h2>
+          <p className="text-xl text-slate-400 mb-8">
+            Rejoignez des milliers d'investisseurs qui font confiance à MODERANT pour leurs décisions financières.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/register">
+              <Button variant="primary" size="lg">
+                Créer mon compte gratuit
+              </Button>
+            </Link>
+            <Link to="/demo">
+              <Button variant="secondary" size="lg">
+                Voir la démo
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* Info Section */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            flexWrap: 'wrap',
-            gap: 4,
-            justifyContent: 'center'
-          }}
-        >
-          <Box 
-            sx={{ 
-              width: { xs: '100%', md: '45%' },
-              minWidth: { xs: '100%', sm: '280px', md: '280px' },
-              flex: '1 1 280px',
-              maxWidth: '500px'
-            }}
-          >
-            <Card
-              sx={{ 
-                background: 'rgba(35, 39, 47, 0.5)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
-                height: '100%',
-              }}
-            >
-              <CardContent sx={{ p: 4 }}>
-                <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 600, mb: 3 }}>
-                  Pourquoi choisir MODERANT BRVM ?
-                </Typography>
-                <Typography variant="body1" paragraph sx={{ color: '#A0AEC0', mb: 4 }}>
-                  Notre plateforme offre des analyses approfondies et des recommandations
-                  personnalisées pour vous aider à prendre les meilleures décisions
-                  d'investissement sur le marché BRVM.
-                </Typography>
-                <Button
-                  component={Link}
-                  to="/register"
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  sx={{ 
-                    py: 1.5,
-                    px: 3,
-                    boxShadow: '0 4px 14px 0 rgba(0, 198, 174, 0.3)',
-                    '&:hover': {
-                      boxShadow: '0 6px 20px 0 rgba(0, 198, 174, 0.5)',
-                      transform: 'translateY(-2px)',
-                    },
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  Commencer maintenant
-                </Button>
-              </CardContent>
-            </Card>
-          </Box>
-
-          <Box 
-            sx={{ 
-              width: { xs: '100%', md: '45%' },
-              minWidth: { xs: '100%', sm: '280px', md: '280px' },
-              flex: '1 1 280px',
-              maxWidth: '500px'
-            }}
-          >
-            <Card
-              sx={{ 
-                background: 'rgba(35, 39, 47, 0.5)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
-                height: '100%',
-              }}
-            >
-              <CardContent sx={{ p: 4 }}>
-                <Typography variant="h5" component="h2" gutterBottom sx={{ fontWeight: 600, mb: 3 }}>
-                  Nos services
-                </Typography>
-                <List>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleIcon sx={{ color: '#00C6AE' }} />
-                    </ListItemIcon>
-                    <ListItemText 
-                      primary="Analyses techniques détaillées" 
-                      primaryTypographyProps={{ 
-                        sx: { 
-                          color: '#FFFFFF',
-                          fontWeight: 500
-                        } 
-                      }}
-                    />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleIcon sx={{ color: '#00C6AE' }} />
-                    </ListItemIcon>
-                    <ListItemText 
-                      primary="Recommandations personnalisées" 
-                      primaryTypographyProps={{ 
-                        sx: { 
-                          color: '#FFFFFF',
-                          fontWeight: 500
-                        } 
-                      }}
-                    />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemIcon>
-                      <CheckCircleIcon sx={{ color: '#00C6AE' }} />
-                    </ListItemIcon>
-                    <ListItemText 
-                      primary="Alertes en temps réel" 
-                      primaryTypographyProps={{ 
-                        sx: { 
-                          color: '#FFFFFF',
-                          fontWeight: 500
-                        } 
-                      }}
-                    />
-                  </ListItem>
-                </List>
-              </CardContent>
-            </Card>
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+      {/* Footer */}
+      <footer className="bg-dark-950 py-12 border-t border-dark-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-4">MODERANT</h3>
+              <p className="text-slate-400">
+                La plateforme de trading moderne pour les marchés africains.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Produit</h4>
+              <ul className="space-y-2 text-slate-400">
+                <li><a href="#" className="hover:text-white transition-colors">Fonctionnalités</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Tarifs</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">API</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Support</h4>
+              <ul className="space-y-2 text-slate-400">
+                <li><a href="#" className="hover:text-white transition-colors">Centre d'aide</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Communauté</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-white font-semibold mb-4">Légal</h4>
+              <ul className="space-y-2 text-slate-400">
+                <li><a href="#" className="hover:text-white transition-colors">Confidentialité</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Conditions</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Sécurité</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-dark-800 mt-8 pt-8 text-center text-slate-400">
+            <p>&copy; 2024 MODERANT. Tous droits réservés.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 };
 
