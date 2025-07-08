@@ -1,0 +1,23 @@
+# Fichiers TypeScript problématiques
+src/presentation/components/AnalyseTechniqueDetaillee.tsx
+src/presentation/components/DashboardAmeliore.tsx
+
+# Tests
+src/tests/
+tests/
+
+# Documentation
+*.md
+!README.md
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache
+.cache/
+.parcel-cache/
+
+# IDE
+.vscode/
+.idea/ 
