@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/moderant-brvm/',
   plugins: [react()],
   build: {
     // Ignorer les erreurs TypeScript pendant le build
